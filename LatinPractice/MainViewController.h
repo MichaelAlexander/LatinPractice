@@ -10,10 +10,17 @@
 
 #import <CoreData/CoreData.h>
 
-@interface MainViewController : UIViewController <FlipsideViewControllerDelegate>
+@class Deck, AppDelegate;
 
-@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@interface MainViewController : UIViewController <FlipsideViewControllerDelegate, UIScrollViewDelegate>
+
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) UIScrollView *deckView;
+@property (nonatomic, assign) int page;
+@property (nonatomic, strong) Deck *deck;
+@property (nonatomic, strong) NSMutableArray *views;
 
 - (IBAction)showInfo:(id)sender;
-
+- (void)loadDeckView;
+- (void)shuffleDeckWithGroup:(NSString *)group;
 @end
