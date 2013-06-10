@@ -37,6 +37,18 @@
     
     [self loadDeckView];
     
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+    {
+        CGSize result = [[UIScreen mainScreen] bounds].size;
+        if(result.height == 480)
+        {
+            [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]]];
+        }
+        if(result.height == 568) {
+            [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background568.png"]]];
+        }
+    }
+    
     page = 0;
     
     
