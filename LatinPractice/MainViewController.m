@@ -15,15 +15,23 @@
 @end
 
 @implementation MainViewController
-@synthesize deckView, page, deck, managedObjectContext, views;
+@synthesize deckView, page, deck, views;
+
+- (id)initWithDeck:(Deck *)newDeck
+{
+    self = [super init];
+    
+    if (self) {
+        deck = newDeck;
+    }
+    
+    return self;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    if (!deck) {
-        deck = [[Deck alloc] initWithRoot:managedObjectContext];
-    }
     
     if (!views) {
         views = [[NSMutableArray alloc] init];
@@ -75,8 +83,8 @@
 
 - (IBAction)showInfo:(id)sender
 {    
-    FlipsideViewController *controller = [[FlipsideViewController alloc] initWithNibName:@"FlipsideViewController" bundle:nil];
-    controller.context = managedObjectContext;
+    FlipsideViewController *controller = [[FlipsideViewController alloc] initWithNibName:@"FlipsideViewController" bundle:nil deck:deck];
+    //controller.context = managedObjectContext;
     controller.mainViewDelegate = self;
     controller.delegate = self;
     controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;

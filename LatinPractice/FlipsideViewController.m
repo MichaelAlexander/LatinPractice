@@ -8,50 +8,26 @@
 
 #import "FlipsideViewController.h"
 #import "MainViewController.h"
+#import "Deck.h"
 
 @interface FlipsideViewController ()
 
 @end
 
 @implementation FlipsideViewController
-@synthesize context, shuffleButton, groupPicker, groupSwitch, switchLabel, groupList, mainViewDelegate;
+@synthesize deck, shuffleButton, groupPicker, groupSwitch, switchLabel, groupList, mainViewDelegate;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil deck:(Deck *)newDeck
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        deck = newDeck;
+        
+        groupList = [deck getGroupList];
     }
     return self;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    if(groupList){
-        [groupList removeAllObjects];
-    }else{
-        groupList = [[NSMutableArray alloc] init];
-    }
-    
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Group"
-                                              inManagedObjectContext:context];
-    [fetchRequest setEntity:entity];
-    
-    NSError *error = nil;
-    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-    if (fetchedObjects == nil) {
-        NSLog(@"Fetch Error");
-    }
-    
-    if ([fetchedObjects count] == 0) {
-        NSLog(@"Empty");
-    }else {
-        for (int i=0; i<fetchedObjects.count; i++) {
-            [groupList addObject:[fetchedObjects objectAtIndex:i]];
-        }
-    }
-}
 
 - (void)viewDidLoad
 {

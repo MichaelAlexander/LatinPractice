@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class FlipsideViewController, MainViewController;
+@class FlipsideViewController, MainViewController, Deck;
 
 @protocol FlipsideViewControllerDelegate
 - (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller;
@@ -21,10 +21,11 @@
 @property (nonatomic, strong) UILabel *switchLabel;
 @property (nonatomic, strong) UIButton *shuffleButton;
 @property (nonatomic, strong) UIPickerView *groupPicker;
-@property (nonatomic, strong) NSManagedObjectContext *context;
+@property (nonatomic, strong) Deck *deck;
 @property (nonatomic, strong) NSMutableArray *groupList;
 @property (nonatomic, strong) MainViewController *mainViewDelegate;
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil deck:(Deck *)newDeck;
 - (IBAction)done:(id)sender;
 - (void)shuffleButtonPressed;
 

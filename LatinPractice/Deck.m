@@ -33,50 +33,37 @@
         [deck removeAllObjects];
     }
     
-    if (!group) {
-        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Card"
-                                                  inManagedObjectContext:root];
-        [fetchRequest setEntity:entity];
-        
-        NSError *error = nil;
-        NSArray *fetchedObjects = [root executeFetchRequest:fetchRequest error:&error];
-        if (fetchedObjects == nil) {
-            NSLog(@"Fetch Error");
-        }
-        
-        if ([fetchedObjects count] == 0) {
-            NSLog(@"Empty");
-        }else {
-            for (int i=0; i<fetchedObjects.count; i++) {
-                [deck addObject:[fetchedObjects objectAtIndex:i]];
-            }
-        }
-    }else{
-        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Card"
-                                                  inManagedObjectContext:root];
-        [fetchRequest setEntity:entity];
-        
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Card"
+                                              inManagedObjectContext:root];
+    [fetchRequest setEntity:entity];
+    
+    //limit deck to just one group if selected
+    if (group) {
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"group == %@", group];
         
         [fetchRequest setPredicate:predicate];
-        
-        NSError *error = nil;
-        NSArray *fetchedObjects = [root executeFetchRequest:fetchRequest error:&error];
-        if (fetchedObjects == nil) {
-            NSLog(@"Fetch Error");
-        }
-        
-        if ([fetchedObjects count] == 0) {
-            NSLog(@"Empty");
-        }else {
-            for (int i=0; i<fetchedObjects.count; i++) {
-                [deck addObject:[fetchedObjects objectAtIndex:i]];
-            }
+    }
+    
+    NSError *error = nil;
+    NSArray *fetchedObjects = [root executeFetchRequest:fetchRequest error:&error];
+    if (fetchedObjects == nil) {
+        NSLog(@"Fetch Error");
+    }
+    
+    if ([fetchedObjects count] == 0) {
+        NSLog(@"Empty");
+    }else {
+        for (int i=0; i<fetchedObjects.count; i++) {
+            [deck addObject:[fetchedObjects objectAtIndex:i]];
         }
     }
     
+    [self shuffleDeck];
+}
+
+-(void)shuffleDeck
+{
     NSUInteger count = [deck count];
     for (NSUInteger i = 0; i < count; ++i) {
         // Select a random element between i and end of array to swap with.
@@ -86,7 +73,33 @@
     }
 }
 
-- (int)getDeckSize
+-(NSMutableArray *)getGroupList
+{
+    NSMutableArray *groupList = [[NSMutableArray alloc] init];
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Group"
+                                              inManagedObjectContext:root];
+    [fetchRequest setEntity:entity];
+    
+    NSError *error = nil;
+    NSArray *fetchedObjects = [root executeFetchRequest:fetchRequest error:&error];
+    if (fetchedObjects == nil) {
+        NSLog(@"Fetch Error");
+    }
+    
+    if ([fetchedObjects count] == 0) {
+        NSLog(@"Empty");
+    }else {
+        for (int i=0; i<fetchedObjects.count; i++) {
+            [groupList addObject:[fetchedObjects objectAtIndex:i]];
+        }
+    }
+    
+    return groupList;
+}
+
+-(int)getDeckSize
 {
     return [deck count];
 }

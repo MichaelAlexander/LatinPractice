@@ -18,6 +18,8 @@
     [super setUp];
     
     // Set-up code here.
+    
+    //set up a testing context
     NSArray *bundles = [NSArray arrayWithObject:[NSBundle bundleForClass:[self class]]];
     model = [NSManagedObjectModel mergedModelFromBundles: bundles];
     //NSLog(@"model: %@", model);
@@ -32,7 +34,18 @@
     context = [[NSManagedObjectContext alloc] init];
     [context setPersistentStoreCoordinator: coord];
     
+    //set up test deck
     testDeck = [[Deck alloc] initWithRoot:context];
+    
+    //seed data
+    [testDeck insertTestGroup:@"Animals"];
+    [testDeck insertTestGroup:@"Colors"];
+    [testDeck insertTestCardWithGroup:@"Animals"];
+    [testDeck insertTestCardWithGroup:@"Animals"];
+    [testDeck insertTestCardWithGroup:@"Colors"];
+    
+    //load all cards and count
+    [testDeck loadDeckWithGroup:NULL];
 }
 
 - (void)tearDown
@@ -62,16 +75,6 @@
 
 - (void)testDeckProperties
 {
-    //seed data
-    [testDeck insertTestGroup:@"Animals"];
-    [testDeck insertTestGroup:@"Colors"];
-    [testDeck insertTestCardWithGroup:@"Animals"];
-    [testDeck insertTestCardWithGroup:@"Animals"];
-    [testDeck insertTestCardWithGroup:@"Colors"];
-    
-    //load all cards and count
-    [testDeck loadDeckWithGroup:NULL];
-    
     int totalCards = [testDeck getDeckSize];
     
     //reduce to single group and count
@@ -82,6 +85,15 @@
     STAssertTrue(totalCards > cardsAfterLimiting, @"number of cards not reduced after group selected");
     NSLog(@"Total: %i Reduced: %i", totalCards, cardsAfterLimiting);
     
+}
+
+- (void)testThatGetGroupListIsReturningACorrectNumberOfItems
+{
+    NSMutableArray *testArray = [testDeck getGroupList];
+    
+    NSLog(@"Array Count: %i", [testArray count]);
+    
+    STAssertTrue([testArray count] > 0, @"GetGroupList is not returning a correct number of items in its array");
 }
 
 @end

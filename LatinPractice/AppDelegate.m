@@ -8,21 +8,24 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
+#import "Deck.h"
 
 @implementation AppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+@synthesize deck, mainViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-        
-    self.mainViewController = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
+    
+    //set up deck (data model)
+    deck = [[Deck alloc] initWithRoot:[self managedObjectContext]];
+    self.mainViewController = [[MainViewController alloc] initWithDeck:deck];
     self.window.rootViewController = self.mainViewController;
-    self.mainViewController.managedObjectContext = self.managedObjectContext;
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -109,6 +112,7 @@
     
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"LatinPractice.sqlite"];
     
+    //if data does not already exist, use the latin app loader data.
     if (![[NSFileManager defaultManager] fileExistsAtPath:[storeURL path]]) {
         NSURL *preloadURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"LatinAppLoader" ofType:@"sqlite"]];
         NSError* err = nil;
