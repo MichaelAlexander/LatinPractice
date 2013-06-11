@@ -46,7 +46,6 @@
 		27AA0B3C168A70DE00C39A5F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27AA0B0F168A70DE00C39A5F /* CoreData.framework */; };
 		27AA0B44168A70DE00C39A5F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27AA0B42168A70DE00C39A5F /* InfoPlist.strings */; };
 		27AA0B47168A70DF00C39A5F /* LatinPracticeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AA0B46168A70DF00C39A5F /* LatinPracticeTests.m */; };
-		27AA0B56168A936100C39A5F /* LoadDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AA0B55168A936000C39A5F /* LoadDeck.m */; };
 		27C8F9FE17657F4A00F5D822 /* bear.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C8F9F217657F4A00F5D822 /* bear.png */; };
 		27C8F9FF17657F4A00F5D822 /* beer.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C8F9F317657F4A00F5D822 /* beer.png */; };
 		27C8FA0017657F4A00F5D822 /* bird.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C8F9F417657F4A00F5D822 /* bird.png */; };
@@ -68,6 +67,13 @@
 		27C8FA1B1766722000F5D822 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C8FA1A1766722000F5D822 /* Default@2x.png */; };
 		27C8FA1D1766722700F5D822 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C8FA1C1766722700F5D822 /* Default.png */; };
 		27C8FA1F1766723100F5D822 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C8FA1E1766723100F5D822 /* Default-568h@2x.png */; };
+		27C8FA301766BE3B00F5D822 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AA0B1B168A70DE00C39A5F /* AppDelegate.m */; };
+		27C8FA321766BE3B00F5D822 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 27835A291694EB01001D63CE /* Card.m */; };
+		27C8FA341766BE3B00F5D822 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = 27835A251694EA09001D63CE /* Deck.m */; };
+		27C8FA361766BE3B00F5D822 /* CardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27835A2C1695000E001D63CE /* CardViewController.m */; };
+		27C8FA381766BE3B00F5D822 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AA0B27168A70DE00C39A5F /* MainViewController.m */; };
+		27C8FA3A1766BE3B00F5D822 /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AA0B2A168A70DE00C39A5F /* FlipsideViewController.m */; };
+		27C8FA3D1766BE3B00F5D822 /* LatinPractice.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 27AA0B23168A70DE00C39A5F /* LatinPractice.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,8 +134,6 @@
 		27AA0B43168A70DE00C39A5F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		27AA0B45168A70DE00C39A5F /* LatinPracticeTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LatinPracticeTests.h; sourceTree = "<group>"; };
 		27AA0B46168A70DF00C39A5F /* LatinPracticeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LatinPracticeTests.m; sourceTree = "<group>"; };
-		27AA0B54168A936000C39A5F /* LoadDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadDeck.h; sourceTree = "<group>"; };
-		27AA0B55168A936000C39A5F /* LoadDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadDeck.m; sourceTree = "<group>"; };
 		27C8F9F217657F4A00F5D822 /* bear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bear.png; path = Images/bear.png; sourceTree = "<group>"; };
 		27C8F9F317657F4A00F5D822 /* beer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer.png; path = Images/beer.png; sourceTree = "<group>"; };
 		27C8F9F417657F4A00F5D822 /* bird.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bird.png; path = Images/bird.png; sourceTree = "<group>"; };
@@ -261,8 +265,6 @@
 				27AA0B27168A70DE00C39A5F /* MainViewController.m */,
 				27AA0B29168A70DE00C39A5F /* FlipsideViewController.h */,
 				27AA0B2A168A70DE00C39A5F /* FlipsideViewController.m */,
-				27AA0B54168A936000C39A5F /* LoadDeck.h */,
-				27AA0B55168A936000C39A5F /* LoadDeck.m */,
 				27AA0B2C168A70DE00C39A5F /* MainViewController.xib */,
 				27AA0B2F168A70DE00C39A5F /* FlipsideViewController.xib */,
 				27AA0B23168A70DE00C39A5F /* LatinPractice.xcdatamodeld */,
@@ -463,7 +465,6 @@
 				27AA0B25168A70DE00C39A5F /* LatinPractice.xcdatamodeld in Sources */,
 				27AA0B28168A70DE00C39A5F /* MainViewController.m in Sources */,
 				27AA0B2B168A70DE00C39A5F /* FlipsideViewController.m in Sources */,
-				27AA0B56168A936100C39A5F /* LoadDeck.m in Sources */,
 				27835A261694EA09001D63CE /* Deck.m in Sources */,
 				27835A2A1694EB01001D63CE /* Card.m in Sources */,
 				27835A2D1695000E001D63CE /* CardViewController.m in Sources */,
@@ -474,6 +475,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27C8FA301766BE3B00F5D822 /* AppDelegate.m in Sources */,
+				27C8FA321766BE3B00F5D822 /* Card.m in Sources */,
+				27C8FA341766BE3B00F5D822 /* Deck.m in Sources */,
+				27C8FA361766BE3B00F5D822 /* CardViewController.m in Sources */,
+				27C8FA381766BE3B00F5D822 /* MainViewController.m in Sources */,
+				27C8FA3A1766BE3B00F5D822 /* FlipsideViewController.m in Sources */,
+				27C8FA3D1766BE3B00F5D822 /* LatinPractice.xcdatamodeld in Sources */,
 				27AA0B47168A70DF00C39A5F /* LatinPracticeTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

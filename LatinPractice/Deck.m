@@ -86,4 +86,24 @@
     }
 }
 
+- (int)getDeckSize
+{
+    return [deck count];
+}
+
+-(void)insertTestGroup:(NSString *)testGroupName
+{
+    NSManagedObject *testGroup = [NSEntityDescription insertNewObjectForEntityForName:@"Group" inManagedObjectContext:root];
+    [testGroup setValue:testGroupName forKey:@"groupName"];
+}
+
+-(void)insertTestCardWithGroup:(NSString *)testGroupName
+{
+    NSManagedObject *testCard = [NSEntityDescription insertNewObjectForEntityForName:@"Card" inManagedObjectContext:root];
+    [testCard setValue:@"test" forKey:@"english"];
+    [testCard setValue:@"test" forKey:@"latin"];
+    [testCard setValue:@"test" forKey:@"image"];
+    [testCard setValue:testGroupName forKey:@"group"];
+}
+
 @end

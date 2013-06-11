@@ -16,5 +16,8 @@
 
 -(id)initWithRoot:(NSManagedObjectContext *)newRoot;
 -(void)loadDeckWithGroup:(NSString *)group;
+-(int)getDeckSize;
+-(void)insertTestGroup:(NSString *)testGroupName;
+-(void)insertTestCardWithGroup:(NSString *)testGroupName;
 
 @end
