@@ -18,7 +18,7 @@
 -(void)loadDeckWithGroup:(NSString *)group;
 -(void)shuffleDeck;
 -(NSMutableArray *)getGroupList;
--(int)getDeckSize;
+-(NSInteger)getDeckSize;
 -(void)insertTestGroup:(NSString *)testGroupName;
 -(void)insertTestCardWithGroup:(NSString *)testGroupName;
 

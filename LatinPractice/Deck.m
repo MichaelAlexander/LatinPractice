@@ -99,7 +99,7 @@
     return groupList;
 }
 
--(int)getDeckSize
+-(NSInteger)getDeckSize
 {
     return [deck count];
 }

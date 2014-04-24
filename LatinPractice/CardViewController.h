@@ -10,16 +10,6 @@
 
 @interface CardViewController : UIViewController
 
-@property (nonatomic, strong) NSManagedObject *card;
-@property (nonatomic, strong) UIImageView *imageView;
-@property (nonatomic, strong) UILabel *latinLabel;
-@property (nonatomic, strong) UILabel *englishLabel;
-@property (nonatomic, strong) UIButton *latinButton;
-@property (nonatomic, strong) UIButton *englishButton;
-@property (nonatomic, assign) BOOL englishActive;
-@property (nonatomic, assign) BOOL latinActive;
-
 -(id)initWithCard:(NSManagedObject *)newCard;
--(void)englishButtonPressed;
--(void)latinButtonPressed;
+
 @end

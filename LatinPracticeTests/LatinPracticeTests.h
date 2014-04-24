@@ -6,11 +6,11 @@
 //  Copyright (c) 2012 Michael Alexander. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
 @class Deck;
 
-@interface LatinPracticeTests : SenTestCase
+@interface LatinPracticeTests : XCTestCase
 
 @property (nonatomic, strong) NSManagedObjectModel *model;
 @property (nonatomic, strong) NSManagedObjectContext *context;

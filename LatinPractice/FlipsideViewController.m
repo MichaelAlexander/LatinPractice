@@ -12,6 +12,16 @@
 
 @interface FlipsideViewController ()
 
+@property (nonatomic, strong) UISwitch *groupSwitch;
+@property (nonatomic, strong) UILabel *switchLabel;
+@property (nonatomic, strong) UIButton *shuffleButton;
+@property (nonatomic, strong) UIPickerView *groupPicker;
+@property (nonatomic, strong) Deck *deck;
+@property (nonatomic, strong) NSMutableArray *groupList;
+
+- (IBAction)done:(id)sender;
+- (void)shuffleButtonPressed;
+
 @end
 
 @implementation FlipsideViewController
@@ -48,6 +58,7 @@
     [groupPicker setDataSource:self];
     [groupPicker setDelegate:self];
     [groupPicker setShowsSelectionIndicator:TRUE];
+    [groupPicker setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:groupPicker];
     
     shuffleButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];

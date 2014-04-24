@@ -40,7 +40,6 @@
 		27AA0B2B168A70DE00C39A5F /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AA0B2A168A70DE00C39A5F /* FlipsideViewController.m */; };
 		27AA0B2E168A70DE00C39A5F /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27AA0B2C168A70DE00C39A5F /* MainViewController.xib */; };
 		27AA0B31168A70DE00C39A5F /* FlipsideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27AA0B2F168A70DE00C39A5F /* FlipsideViewController.xib */; };
-		27AA0B39168A70DE00C39A5F /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27AA0B38168A70DE00C39A5F /* SenTestingKit.framework */; };
 		27AA0B3A168A70DE00C39A5F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27AA0B09168A70DE00C39A5F /* UIKit.framework */; };
 		27AA0B3B168A70DE00C39A5F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27AA0B0B168A70DE00C39A5F /* Foundation.framework */; };
 		27AA0B3C168A70DE00C39A5F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27AA0B0F168A70DE00C39A5F /* CoreData.framework */; };
@@ -128,8 +127,7 @@
 		27AA0B2A168A70DE00C39A5F /* FlipsideViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlipsideViewController.m; sourceTree = "<group>"; };
 		27AA0B2D168A70DE00C39A5F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainViewController.xib; sourceTree = "<group>"; };
 		27AA0B30168A70DE00C39A5F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FlipsideViewController.xib; sourceTree = "<group>"; };
-		27AA0B37168A70DE00C39A5F /* LatinPracticeTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LatinPracticeTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		27AA0B38168A70DE00C39A5F /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		27AA0B37168A70DE00C39A5F /* LatinPracticeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LatinPracticeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		27AA0B41168A70DE00C39A5F /* LatinPracticeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LatinPracticeTests-Info.plist"; sourceTree = "<group>"; };
 		27AA0B43168A70DE00C39A5F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		27AA0B45168A70DE00C39A5F /* LatinPracticeTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LatinPracticeTests.h; sourceTree = "<group>"; };
@@ -173,7 +171,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27AA0B39168A70DE00C39A5F /* SenTestingKit.framework in Frameworks */,
 				27AA0B3A168A70DE00C39A5F /* UIKit.framework in Frameworks */,
 				27AA0B3B168A70DE00C39A5F /* Foundation.framework in Frameworks */,
 				27AA0B3C168A70DE00C39A5F /* CoreData.framework in Frameworks */,
@@ -183,6 +180,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		277AC57F190844F900A5613B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				27AA0B23168A70DE00C39A5F /* LatinPractice.xcdatamodeld */,
+				27835A281694EB01001D63CE /* Card.h */,
+				27835A291694EB01001D63CE /* Card.m */,
+				27835A241694EA09001D63CE /* Deck.h */,
+				27835A251694EA09001D63CE /* Deck.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		2789F547169BBE8300617173 /* images */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,7 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				27AA0B05168A70DE00C39A5F /* LatinPractice.app */,
-				27AA0B37168A70DE00C39A5F /* LatinPracticeTests.octest */,
+				27AA0B37168A70DE00C39A5F /* LatinPracticeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -245,7 +254,6 @@
 				27AA0B0B168A70DE00C39A5F /* Foundation.framework */,
 				27AA0B0D168A70DE00C39A5F /* CoreGraphics.framework */,
 				27AA0B0F168A70DE00C39A5F /* CoreData.framework */,
-				27AA0B38168A70DE00C39A5F /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -253,12 +261,9 @@
 		27AA0B11168A70DE00C39A5F /* LatinPractice */ = {
 			isa = PBXGroup;
 			children = (
+				277AC57F190844F900A5613B /* Model */,
 				27AA0B1A168A70DE00C39A5F /* AppDelegate.h */,
 				27AA0B1B168A70DE00C39A5F /* AppDelegate.m */,
-				27835A281694EB01001D63CE /* Card.h */,
-				27835A291694EB01001D63CE /* Card.m */,
-				27835A241694EA09001D63CE /* Deck.h */,
-				27835A251694EA09001D63CE /* Deck.m */,
 				27835A2B1695000E001D63CE /* CardViewController.h */,
 				27835A2C1695000E001D63CE /* CardViewController.m */,
 				27AA0B26168A70DE00C39A5F /* MainViewController.h */,
@@ -267,7 +272,6 @@
 				27AA0B2A168A70DE00C39A5F /* FlipsideViewController.m */,
 				27AA0B2C168A70DE00C39A5F /* MainViewController.xib */,
 				27AA0B2F168A70DE00C39A5F /* FlipsideViewController.xib */,
-				27AA0B23168A70DE00C39A5F /* LatinPractice.xcdatamodeld */,
 				27AA0B12168A70DE00C39A5F /* Supporting Files */,
 			);
 			path = LatinPractice;
@@ -349,8 +353,8 @@
 			);
 			name = LatinPracticeTests;
 			productName = LatinPracticeTests;
-			productReference = 27AA0B37168A70DE00C39A5F /* LatinPracticeTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = 27AA0B37168A70DE00C39A5F /* LatinPracticeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -358,6 +362,7 @@
 		27AA0AFC168A70DE00C39A5F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Michael Alexander";
 			};
@@ -609,15 +614,15 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LatinPractice.app/LatinPractice";
 				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"\\\"$(SDKROOT)/Developer/Library/Frameworks\\\"",
+					"\\\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\\\"",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LatinPractice/LatinPractice-Prefix.pch";
 				INFOPLIST_FILE = "LatinPracticeTests/LatinPracticeTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -626,15 +631,15 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LatinPractice.app/LatinPractice";
 				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"\\\"$(SDKROOT)/Developer/Library/Frameworks\\\"",
+					"\\\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\\\"",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LatinPractice/LatinPractice-Prefix.pch";
 				INFOPLIST_FILE = "LatinPracticeTests/LatinPracticeTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};

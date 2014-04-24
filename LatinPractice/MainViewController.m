@@ -12,9 +12,18 @@
 
 @interface MainViewController ()
 
+@property (nonatomic, strong) UIScrollView *deckView;
+@property (nonatomic, assign) int page;
+@property (nonatomic, strong) Deck *deck;
+@property (nonatomic, strong) NSMutableArray *views;
+
+- (IBAction)showInfo:(id)sender;
+- (void)loadDeckView;
+
 @end
 
 @implementation MainViewController
+
 @synthesize deckView, page, deck, views;
 
 - (id)initWithDeck:(Deck *)newDeck
@@ -93,7 +102,7 @@
 
 -(void)loadDeckView
 {
-    deckView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 500)];
+    deckView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 438)];
     
     [deckView setBackgroundColor:[UIColor clearColor]];
     [deckView setPagingEnabled:TRUE];
@@ -116,7 +125,6 @@
     [self loadScrollViewWithPage:page];
     [self loadScrollViewWithPage:page + 1];
     
-	// update the scroll view to the appropriate page
     CGRect frame = deckView.frame;
     frame.origin.x = frame.size.width * page;
     frame.origin.y = 0;
@@ -152,20 +160,12 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)sender
 {
-    // We don't want a "feedback loop" between the UIPageControl and the scroll delegate in
-    // which a scroll event generated from the user hitting the page control triggers updates from
-    // the delegate method. We use a boolean to disable the delegate logic when the page control is used.
-   
-    // Switch the indicator when more than 50% of the previous/next page is visible
     CGFloat pageWidth = deckView.frame.size.width;
     page = floor((deckView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
     
-    // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
     [self loadScrollViewWithPage:page - 1];
     [self loadScrollViewWithPage:page];
     [self loadScrollViewWithPage:page + 1];
-    
-    // A possible optimization would be to unload the views+controllers which are no longer visible
 }
 
 

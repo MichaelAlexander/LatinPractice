@@ -16,17 +16,9 @@
 
 @interface FlipsideViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource>
 
-@property (weak, nonatomic) id <FlipsideViewControllerDelegate> delegate;
-@property (nonatomic, strong) UISwitch *groupSwitch;
-@property (nonatomic, strong) UILabel *switchLabel;
-@property (nonatomic, strong) UIButton *shuffleButton;
-@property (nonatomic, strong) UIPickerView *groupPicker;
-@property (nonatomic, strong) Deck *deck;
-@property (nonatomic, strong) NSMutableArray *groupList;
+@property (nonatomic, strong) id <FlipsideViewControllerDelegate> delegate;
 @property (nonatomic, strong) MainViewController *mainViewDelegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil deck:(Deck *)newDeck;
-- (IBAction)done:(id)sender;
-- (void)shuffleButtonPressed;
 
 @end

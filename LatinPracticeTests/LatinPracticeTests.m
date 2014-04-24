@@ -54,7 +54,7 @@
     
     context = nil;
     NSError *error = nil;
-    STAssertTrue([coord removePersistentStore: store error: &error],
+    XCTAssertTrue([coord removePersistentStore: store error: &error],
                  @"couldn't remove persistent store: %@", error);
     store = nil;
     coord = nil;
@@ -65,12 +65,12 @@
 
 - (void)testThatEnvironmentWorks
 {
-    STAssertNotNil(store, @"no persistent store");
+    XCTAssertNotNil(store, @"no persistent store");
 }
 
 - (void)testThatDeckLoads
 {
-    STAssertNotNil([self.testDeck deck], @"deck not loading");
+    XCTAssertNotNil([self.testDeck deck], @"deck not loading");
 }
 
 - (void)testDeckProperties
@@ -82,7 +82,7 @@
     
     int cardsAfterLimiting = [testDeck getDeckSize];
     
-    STAssertTrue(totalCards > cardsAfterLimiting, @"number of cards not reduced after group selected");
+    XCTAssertTrue(totalCards > cardsAfterLimiting, @"number of cards not reduced after group selected");
     NSLog(@"Total: %i Reduced: %i", totalCards, cardsAfterLimiting);
     
 }
@@ -93,7 +93,7 @@
     
     NSLog(@"Array Count: %i", [testArray count]);
     
-    STAssertTrue([testArray count] > 0, @"GetGroupList is not returning a correct number of items in its array");
+    XCTAssertTrue([testArray count] > 0, @"GetGroupList is not returning a correct number of items in its array");
 }
 
 @end
